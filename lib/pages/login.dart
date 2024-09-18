@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
 
 //comando stl
-class Login extends StatelessWidget {
+class Login extends StatefulWidget {
   const Login({super.key});
 
+  @override
+  State<Login> createState() => _LoginState();
+}
+
+class _LoginState extends State<Login> {
+  final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -11,6 +17,7 @@ class Login extends StatelessWidget {
           const Color.fromARGB(255, 30, 30, 30), // Fundo preto opaco
       body: Center(
         child: Form(
+          key: _formKey,
           child: SingleChildScrollView(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -38,6 +45,18 @@ class Login extends StatelessWidget {
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.all(Radius.circular(30)),
                             borderSide: BorderSide.none)),
+                            validator: (String? email) {
+                      if (email == "" || email == null) {
+                        return "O email não pode estar vazio";
+                      }
+                      if (email.length < 6) {
+                        return "O e-mail está muito curto";
+                      }
+                      if (!email.contains("@")) {
+                        return "O e-mail não é valido";
+                      }
+                      return null;
+                    }, // Para ocultar a senha
                   ),
                 ),
                 const SizedBox(height: 40),
@@ -53,7 +72,8 @@ class Login extends StatelessWidget {
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.all(Radius.circular(30)),
                             borderSide: BorderSide.none)),
-                    obscureText: true, // Para ocultar a senha
+                    obscureText: true,
+                    
                   ),
                 ),
                 Padding(
@@ -75,7 +95,7 @@ class Login extends StatelessWidget {
                 Center(
                   child: ElevatedButton(
                     onPressed: () {
-                      // Função de login
+                      buttonEnterClick();
                     },
                     child: const Text("Entrar",
                         style: TextStyle(color: Colors.white)),
@@ -96,32 +116,50 @@ class Login extends StatelessWidget {
                   children: [
                     InkWell(
                       onTap: () {},
-                      child:Container(
+                      child: Container(
                         width: 60,
                         height: 60,
-                        child: Image.asset('assets/image/google.png')),
+                        child: Image.asset('assets/image/google.png'),
+                      ),
                     ),
-                    
                     SizedBox(width: 30),
-                    Container(
+                    InkWell(
+                      onTap: () {},
+                      child: Container(
                         width: 60,
                         height: 60,
-                        child: Image.asset('assets/image/apple.png')),
-                    const SizedBox(width: 30),
-                    Container(
+                        child: Image.asset('assets/image/apple.png'),
+                      ),
+                    ),
+                    SizedBox(width: 30),
+                    InkWell(
+                      onTap: () {},
+                      child: Container(
                         width: 60,
                         height: 60,
-                        child: Image.asset('assets/image/facebook.png')),
+                        child: Image.asset('assets/image/facebook.png'),
+                      ),
+                    ),
                   ],
                 ),
-                const SizedBox(height: 30,),
-
-               const  Divider()
+                const SizedBox(
+                  height: 30,
+                ),
+                const Divider()
               ],
             ),
           ),
         ),
       ),
     );
+  }
+
+  buttonEnterClick() {
+    if(_formKey.currentState!.validate()){
+      print("form ok");
+    }
+    else{
+      print("form erro");
+    }
   }
 }
