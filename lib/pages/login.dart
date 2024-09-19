@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:saphir/pages/cadastro.dart';
 
 //comando stl
 class Login extends StatefulWidget {
@@ -10,6 +11,7 @@ class Login extends StatefulWidget {
 
 class _LoginState extends State<Login> {
   final _formKey = GlobalKey<FormState>();
+  bool _showPassword = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,7 +47,7 @@ class _LoginState extends State<Login> {
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.all(Radius.circular(30)),
                             borderSide: BorderSide.none)),
-                            validator: (String? email) {
+                    validator: (String? email) {
                       if (email == "" || email == null) {
                         return "O email não pode estar vazio";
                       }
@@ -63,17 +65,26 @@ class _LoginState extends State<Login> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 30.0),
                   child: TextFormField(
+                    obscureText: _showPassword == false ? true : false,
                     // autofocus removido deste campo
-                    decoration: const InputDecoration(
+                    decoration: InputDecoration(
                         filled: true, // Preenche o fundo
+                        suffixIcon: GestureDetector(
+                          child: Icon(_showPassword == false
+                              ? Icons.visibility_off
+                              : Icons.visibility),
+                          onTap: () {
+                            setState(() {
+                              _showPassword = !_showPassword;
+                            });
+                          },
+                        ),
                         fillColor: Colors.white,
                         iconColor: Color.fromARGB(255, 23, 44, 228),
                         hintText: "Senha",
-                        border: OutlineInputBorder(
+                        border: const OutlineInputBorder(
                             borderRadius: BorderRadius.all(Radius.circular(30)),
                             borderSide: BorderSide.none)),
-                    obscureText: true,
-                    
                   ),
                 ),
                 Padding(
@@ -105,7 +116,7 @@ class _LoginState extends State<Login> {
                         side: const BorderSide(color: Colors.white, width: 2),
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(30)),
-                        backgroundColor: Colors.black),
+                        backgroundColor: Color.fromARGB(255, 30, 30, 30)),
                   ),
                 ),
                 const SizedBox(
@@ -145,7 +156,41 @@ class _LoginState extends State<Login> {
                 const SizedBox(
                   height: 30,
                 ),
-                const Divider()
+                const Divider(
+                  indent: 90,
+                  endIndent: 90,
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
+                Center(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment
+                        .center, // Centraliza o conteúdo na horizontal
+                    children: [
+                      const Text(
+                        "Não tem uma conta?",
+                        style: TextStyle(
+                          color: Colors.white,
+                        ),
+                      ),
+                      const SizedBox(
+                          width: 5), // Espaço entre o texto e o "Cadastre-se"
+                      GestureDetector(
+                        child: const Text(
+                          "Cadastre-se",
+                          style: TextStyle(
+                            color: Colors.blue,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        onTap: () {
+                          Navigator.pushNamed(context, "/cadastro");
+                        },
+                      ),
+                    ],
+                  ),
+                ),
               ],
             ),
           ),
@@ -155,10 +200,9 @@ class _LoginState extends State<Login> {
   }
 
   buttonEnterClick() {
-    if(_formKey.currentState!.validate()){
+    if (_formKey.currentState!.validate()) {
       print("form ok");
-    }
-    else{
+    } else {
       print("form erro");
     }
   }

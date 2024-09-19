@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:saphir/pages/cadastro.dart';
+import 'package:saphir/pages/home.dart';
 import 'package:saphir/pages/login.dart';
 
 void main() {
@@ -12,10 +14,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(colorScheme: ColorScheme.fromSeed(seedColor: Color.fromARGB(0, 0, 0, 0)),
-      useMaterial3: true),
-      home: const Login(),
+      initialRoute: '/',
+      routes: {
+        '/' : (context) => const Login(),
+        '/cadastro' : (context) => const Cadastro(),
+        '/home' : (context) => const Home()
+      },
       debugShowCheckedModeBanner: false,
     );
   }
