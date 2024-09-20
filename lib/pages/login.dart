@@ -30,7 +30,7 @@ class _LoginState extends State<Login> {
                     "saphir",
                     style: TextStyle(
                         color: Color.fromARGB(255, 23, 44, 228),
-                        fontSize: 50,
+                        fontSize: 60,
                         fontFamily: 'DaysOne'),
                   ),
                 ),
@@ -39,13 +39,14 @@ class _LoginState extends State<Login> {
                   padding: const EdgeInsets.symmetric(horizontal: 30.0),
                   child: TextFormField(
                     autofocus: true, // Apenas um campo com autofocus
-                    decoration: const InputDecoration(
+                    decoration:  InputDecoration(
                         filled: true, // Preenche o fundo
-                        fillColor: Colors.white,
+                       fillColor: Colors.grey[800],
                         iconColor: Color.fromARGB(255, 23, 44, 228),
-                        hintText: "E-mail",
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(30)),
+                        labelText:  "E-mail",
+                        labelStyle: TextStyle(color: Colors.white),
+                        border:  OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
                             borderSide: BorderSide.none)),
                     validator: (String? email) {
                       if (email == "" || email == null) {
@@ -79,11 +80,12 @@ class _LoginState extends State<Login> {
                             });
                           },
                         ),
-                        fillColor: Colors.white,
+                        fillColor: Colors.grey[800],
                         iconColor: Color.fromARGB(255, 23, 44, 228),
-                        hintText: "Senha",
+                        labelText: "Senha",
+                        labelStyle: TextStyle(color: Colors.white),
                         border: const OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(30)),
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
                             borderSide: BorderSide.none)),
                   ),
                 ),
@@ -108,7 +110,7 @@ class _LoginState extends State<Login> {
                     onPressed: () {
                       buttonEnterClick();
                     },
-                    child: const Text("Entrar",
+                    child:  Text("Entrar",
                         style: TextStyle(color: Colors.white)),
                     style: OutlinedButton.styleFrom(
                         padding: const EdgeInsets.symmetric(
