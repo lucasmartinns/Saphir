@@ -1,62 +1,26 @@
 import 'package:flutter/material.dart';
-import 'dart:async'; // Para usar o Timer
+import 'package:another_flutter_splash_screen/another_flutter_splash_screen.dart';
+import 'package:saphir/pages/login.dart';
 
-class SplashScreen extends StatefulWidget {
-  const SplashScreen({super.key});
 
-  @override
-  // ignore: library_private_types_in_public_api
-  _SplashScreenState createState() => _SplashScreenState();
-}
 
-class _SplashScreenState extends State<SplashScreen> {
-  @override
-  void initState() {
-    super.initState();
-
-    // Timer para simular o carregamento e redirecionar
-    Timer(const Duration(seconds: 1), () {
-      Navigator.pushReplacementNamed(context, '/login'); // Redireciona para a página de login
-    });
-  }
+class Splash extends StatelessWidget {
+  const Splash({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            colors: [
-              Color(0xFF030469), // Cor de cima
-              Color.fromARGB(255, 30, 30, 30), // Cor do meio (preta)
-              Color(0xFF030469), // Cor de baixo
-            ],
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-          ),
-        ),
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Image.asset(
-                'assets/image/logo.png', // Imagem do logo
-                width: 150,
-                height: 150,
-              ),
-              const SizedBox(height: 20),
-              const Text(
-                'Saphir',
-                style: TextStyle(
-                  fontSize: 40,
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
+    return FlutterSplashScreen.gif(
+          gifPath: 'assets/gif/gifsaphir.gif',
+          gifWidth: MediaQuery.of(context).size.height * 100,
+          gifHeight: MediaQuery.of(context).size.width * 100,
+          nextScreen: const Login(),
+          duration: const Duration(milliseconds: 3515),
+          onInit: () async {
+            debugPrint("onInit");
+          },
+          onEnd: () async {
+            debugPrint("onEnd 1");
+          },
+        );;
   }
 }

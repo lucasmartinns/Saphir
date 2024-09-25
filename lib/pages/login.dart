@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:saphir/pages/cadastro.dart';
-
+import 'package:saphir/pages/splash.dart';
 //comando stl
 class Login extends StatefulWidget {
   const Login({super.key});
