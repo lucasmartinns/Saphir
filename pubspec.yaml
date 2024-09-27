@@ -28,7 +28,6 @@ flutter:
 
   assets:
     - assets/image/
-    - assets/gif/gifsaphir.gif
 
   fonts:
     - family: DaysOne
