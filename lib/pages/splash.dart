@@ -87,20 +87,20 @@ class _SplashScreenState extends State<Splash> with TickerProviderStateMixin {
               scale: _iconAnimation,
               child: Image.asset(
                 'assets/image/saphir.png',
-                width: 300, // Tamanho grande inicial
-                height: 300, // Tamanho grande inicial
+                width: 350, // Tamanho grande inicial
+                height: 350, // Tamanho grande inicial
               ),
             ),
             // Se o texto deve ser mostrado, ele aparece abaixo do ícone e depois sobe
             if (_showText)
               Positioned(
-                top: 370, // Posição inicial abaixo do ícone
+                top: 440, // Posição inicial abaixo do ícone
                 child: SlideTransition(
                   position: _finalSlideAnimation,
                   child: const Text(
                     'saphir',
                     style: TextStyle(
-                      fontSize: 60,
+                      fontSize: 80,
                       color: Color.fromARGB(255, 23, 44, 228),
                       fontFamily: 'DaysOne', // Fonte 'Days One'
                     ),
