@@ -39,14 +39,14 @@ class _LoginState extends State<Login> {
                   padding: const EdgeInsets.symmetric(horizontal: 30.0),
                   child: TextFormField(
                     autofocus: false, // Apenas um campo com autofocus
-                    decoration:  InputDecoration(
+                    decoration:  const InputDecoration(
                         filled: true, // Preenche o fundo
-                       fillColor: Colors.grey[800],
+                       fillColor: Colors.white,
                         iconColor: Color.fromARGB(255, 23, 44, 228),
-                        labelText:  "E-mail",
-                        labelStyle: TextStyle(color: Colors.white),
+                        hintText:  "E-mail",
+                        hintStyle: TextStyle(color: Colors.grey),
                         border:  OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            borderRadius: BorderRadius.all(Radius.circular(30)),
                             borderSide: BorderSide.none)),
                     validator: (String? email) {
                       if (email == "" || email == null) {
@@ -80,12 +80,12 @@ class _LoginState extends State<Login> {
                             });
                           },
                         ),
-                        fillColor: Colors.grey[800],
+                        fillColor: Colors.white,
                         iconColor: Color.fromARGB(255, 23, 44, 228),
-                        labelText: "Senha",
-                        labelStyle: TextStyle(color: Colors.white),
+                        hintText: "Senha",
+                        hintStyle: TextStyle(color: Colors.grey),
                         border: const OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            borderRadius: BorderRadius.all(Radius.circular(30)),
                             borderSide: BorderSide.none)),
                   ),
                 ),
