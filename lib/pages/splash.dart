@@ -57,7 +57,7 @@ class _SplashScreenState extends State<Splash> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Color.fromARGB(255, 30, 30, 30),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -66,7 +66,7 @@ class _SplashScreenState extends State<Splash> with TickerProviderStateMixin {
               scale: _logoAnimation,
               child: Image.asset('assets/image/saphir.png'), // Primeira imagem do logo
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 10),
             AnimatedSwitcher(
               duration: const Duration(seconds: 2),
               child: showLoginText
@@ -75,16 +75,16 @@ class _SplashScreenState extends State<Splash> with TickerProviderStateMixin {
                       key: ValueKey('loginText'),
                       style: TextStyle(
                         fontSize: 30,
-                        color: Colors.blue,
+                        color: Color.fromARGB(255, 23, 44, 228),
                         fontFamily: 'DaysOne', // Aplicando a fonte Days One
                       ),
                     )
                   : const Text(
-                      'Saphir',
+                      'saphir',
                       key: ValueKey('saphirText'),
                       style: TextStyle(
-                        fontSize: 30,
-                        color: Colors.blue,
+                        fontSize: 60,
+                        color: Color.fromARGB(255, 23, 44, 228),
                         fontFamily: 'DaysOne', // Aplicando a fonte Days One
                       ),
                     ),

@@ -38,7 +38,7 @@ class _LoginState extends State<Login> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 30.0),
                   child: TextFormField(
-                    autofocus: true, // Apenas um campo com autofocus
+                    autofocus: false, // Apenas um campo com autofocus
                     decoration:  InputDecoration(
                         filled: true, // Preenche o fundo
                        fillColor: Colors.grey[800],
