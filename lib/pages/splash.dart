@@ -54,7 +54,7 @@ class _SplashScreenState extends State<Splash> with TickerProviderStateMixin {
     });
 
     // Após 3 segundos, iniciar a animação de deslizamento do texto para cima
-    Future.delayed(const Duration(seconds: 4), () {
+    Future.delayed(const Duration(seconds: 2), () {
       _finalSlideController.forward(); // Iniciar a animação de deslizamento para o topo
     });
 
